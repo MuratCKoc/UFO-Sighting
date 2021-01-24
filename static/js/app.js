@@ -9,14 +9,15 @@ var filterButton = d3.select("#filter-btn")
 console.log(data);
 
 //var varibe = d3.select("#datetime").property("value");
-var inputDate = d3.select("#datetime");
-var inputValue = inputDate.property("value");
+//var inputDate = d3.select("#datetime");
+//var inputValue = inputDate.property("value");
 
 //Prefill the table
-tableData.forEach(function(rec){
-    var row = tbody.append("tr");
-    Object.entries(rec).forEach(([key,value]) => row.append("td").text(value));
-});
+//tableData.forEach(function(rec){
+//    var row = tbody.append("tr");
+//    Object.entries(rec).forEach(([key,value]) => row.append("td").text(value));
+//});
+
 // Create event handlers
 //filterButton.on("click",fillTable(function(){
 //    var inp = d3.select(".form-control").property("value");
@@ -31,13 +32,14 @@ function fillTable(){
     //Stop refresh
     d3.event.preventDefault();
 
-    //Clear table
-    
+    //Get date
+    var inputValue = d3.select("#datetime").property("value");
     var tbody = d3.select("tbody");
     d3.event.target.value;
 
     var filtered = tableData.filter(item => item.datetime === inputValue);
-
+    console.log(filtered);
+    console.log(inputValue);
     filtered.forEach(function(rec){
     var row = tbody.append("tr");
     Object.entries(rec).forEach(([key,value]) => row.append("td").text(value));
