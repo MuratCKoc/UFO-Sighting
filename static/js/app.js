@@ -33,49 +33,20 @@ function fillTable(){
 
     //Clear table
     
-
     var tbody = d3.select("tbody");
     d3.event.target.value;
 
-
     var filtered = tableData.filter(item => item.datetime === inputValue);
 
-    filtered.forEach(([key, value]) => {
-        var cell = row.append("td");
-        cell.text(value);
-    });
+    filtered.forEach(function(rec){
     var row = tbody.append("tr");
-    var cell = row.append("td");
-    cell.text(filtered[0].city);
-    
+    Object.entries(rec).forEach(([key,value]) => row.append("td").text(value));
+});
 
 
   //d3.select("tbody").selectAll("tr").data(filtered).enter().append("tr").html(function(d) {
   //    return `"<td>${inputValue.datetime}</td><td>${inputValue.city}</td>`
   //})
- //   tableData.forEach((sight)=> {
- //       var row = tbody.append("tr");
- //       Object.entries(sight).forEach(([key,value]));
- //   })
-
-//    data.forEach((sight) => {
-//        var row = tbody.append("tr");
-//        Object.entries(sight).filter(item => item.datetime === inputValue).forEach(([key,value]) => {
-//            var cell = row.append("td");
-//            cell.text(value);
-//            console.log(cell.text());
-//        });
-//    });
-        ;
-
- //   data.forEach((weatherReport) => {
- //       var row = tbody.append("tr");
- //       Object.entries(weatherReport).forEach(([key, value]) => {
- //       var cell = row.append("td");
- //       cell.text(value);
- // });})
-    //var varibe = d3.select("#datetime").property("value");
-    //console.log(varibe);
     console.log("ASDASDASD");
     console.log(inputValue);
 // BONUS: Refactor to use Arrow Functions!
