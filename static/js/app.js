@@ -11,15 +11,18 @@ var filterZone = []
 var cityOptions = []
 var stateOptions = []
 var countryOptions = []
-var ShapeOptions = []
+var shapeOptions = []
 
 //Get distinct values from data and store them into dropdown option filters
 
 //Get distinct values from data
     tableData.forEach(function(rec) {
         if (cityOptions.includes(rec.city)===false){cityOptions.push(rec.city);}
+        if (stateOptions.includes(rec.state)===false){stateOptions.push(rec.state);}
+        if (countryOptions.includes(rec.country)===false){countryOptions.push(rec.country);}
+        if (shapeOptions.includes(rec.shape)===false){shapeOptions.push(rec.shape);}
     });
-    console.log(cityOptions);
+
 
 // Console.log the weather data from data.js
 console.log(data);
