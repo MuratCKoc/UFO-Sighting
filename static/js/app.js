@@ -49,6 +49,7 @@ shapeOptions.forEach(function(shape) {
 
 // To be used to prepare the form
 var filterZone = {
+        "Date":datetimeOptions,
         "City":cityOptions,
         "State":stateOptions,
         "Country":countryOptions,
@@ -64,8 +65,11 @@ form.on("submit",fillTable);
 // Filter Table
 function fillTable(){
 
-    //Stop refresh
+    // Stop refresh
     d3.event.preventDefault();
+
+    // Remove previous results
+    tbody.selectAll('tr').remove();
 
     //Get values to be filtered.
     var dateV = dateOps.property("value");
@@ -75,19 +79,25 @@ function fillTable(){
     var shapeV = shapeOps.property("value");
     d3.event.target.value;
 
+    var filtered = tableData;
 
     //Filter data according to date
-    var filtered = tableData.filter(item => item.datetime === dateV)
-    .filter(item => item.city === cityV)
-    .filter(item => item.state === stateV)
-    .filter(item => item.country === countryV)
-    .filter(item => item.shape === shapeV);
+    if (dateV!=="Click to select")
+        filtered = filtered.filter(item => item.datetime === dateV);
+    if (cityV!=="Click to select")
+        filtered = filtered.filter(item => item.city === cityV);
+    if (stateV!=="Click to select")
+        filtered = filtered.filter(item => item.state === stateV)
+    if (countryV!=="Click to select")
+        filtered = filtered.filter(item => item.country === countryV)
+    if (shapeV!=="Click to select")
+        filtered = filtered.filter(item => item.shape === shapeV);
+
+    // Populate the table;
     filtered.forEach(function(rec){
     var row = tbody.append("tr");
     Object.entries(rec).forEach(([key,value]) => row.append("td").text(value));
 });
-    console.log("ASDASDASD");
-    console.log(dateV);
 
 }
 
