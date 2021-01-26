@@ -23,20 +23,28 @@ tableData.forEach(function(rec) {
 });
 
 // Populate options
+// Dates
 var dateOps = d3.select("#Date-s")
 datetimeOptions.forEach(function(date) {
     dateOps.append('option').html(`<option value=${date}> ${date} </option>`)});
-
-var cityOps = d3.select("#cityOps")
+// Cities
+var cityOps = d3.select("#City-s")
 cityOptions.forEach(function(city) {
     cityOps.append('option').html(`<option value=${city}> ${city} </option>`)
 });
-
-var stateOps = d3.select("#stateOps")
-stateOptions.forEach(function(state) {
-    var oprow = d3.select("#State-s");
-    Object.entries(state).forEach
-})
+// States
+var stateOps = d3.select("#State-s")
+cityOptions.forEach(function(state) {
+    stateOps.append('option').html(`<option value=${state}> ${state} </option>`)
+});
+var countryOps = d3.select("#Country-s")
+countryOptions.forEach(function(country) {
+    countryOps.append('option').html(`<option value=${country}> ${country} </option>`)
+});
+var shapeOps = d3.select("#Shape-s")
+shapeOptions.forEach(function(shape) {
+    shapeOps.append('option').html(`<option value=${shape}> ${shape} </option>`)
+});
 
 
 // To be used to prepare the form
