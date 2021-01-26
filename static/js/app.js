@@ -75,14 +75,13 @@ function fillTable(){
     var shapeV = shapeOps.property("value");
     d3.event.target.value;
 
-    console.log(dateV);
-    console.log(cityV);
-    console.log(countryV);
-    console.log(shapeV);
-    console.log(stateV);
 
     //Filter data according to date
-    var filtered = tableData.filter(item => item.datetime === dateV);
+    var filtered = tableData.filter(item => item.datetime === dateV)
+    .filter(item => item.city === cityV)
+    .filter(item => item.state === stateV)
+    .filter(item => item.country === countryV)
+    .filter(item => item.shape === shapeV);
     filtered.forEach(function(rec){
     var row = tbody.append("tr");
     Object.entries(rec).forEach(([key,value]) => row.append("td").text(value));
