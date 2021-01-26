@@ -34,7 +34,7 @@ cityOptions.forEach(function(city) {
 });
 // States
 var stateOps = d3.select("#State-s")
-cityOptions.forEach(function(state) {
+stateOptions.forEach(function(state) {
     stateOps.append('option').html(`<option value=${state}> ${state} </option>`)
 });
 var countryOps = d3.select("#Country-s")
@@ -63,22 +63,32 @@ form.on("submit",fillTable);
 
 // Filter Table
 function fillTable(){
+
     //Stop refresh
     d3.event.preventDefault();
 
-    //Get date
-    var inputValue = d3.select("#datetime").property("value");
-    var tbody = d3.select("tbody");
+    //Get values to be filtered.
+    var dateV = dateOps.property("value");
+    var cityV = cityOps.property("value");
+    var countryV = countryOps.property("value");
+    var stateV = stateOps.property("value");
+    var shapeV = shapeOps.property("value");
     d3.event.target.value;
 
+    console.log(dateV);
+    console.log(cityV);
+    console.log(countryV);
+    console.log(shapeV);
+    console.log(stateV);
+
     //Filter data according to date
-    var filtered = tableData.filter(item => item.datetime === inputValue);
+    var filtered = tableData.filter(item => item.datetime === dateV);
     filtered.forEach(function(rec){
     var row = tbody.append("tr");
     Object.entries(rec).forEach(([key,value]) => row.append("td").text(value));
 });
     console.log("ASDASDASD");
-    console.log(inputValue);
+    console.log(dateV);
 
 }
 
