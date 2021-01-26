@@ -14,14 +14,32 @@ var datetimeOptions = []
 //Get distinct values from data and store them into dropdown option filters
 
 //Get distinct values from data
-    tableData.forEach(function(rec) {
-        if (datetimeOptions.includes(rec.datetime)===false){datetimeOptions.push(rec.datetime);}
-        if (cityOptions.includes(rec.city)===false){cityOptions.push(rec.city);}
-        if (stateOptions.includes(rec.state)===false){stateOptions.push(rec.state);}
-        if (countryOptions.includes(rec.country)===false){countryOptions.push(rec.country);}
-        if (shapeOptions.includes(rec.shape)===false){shapeOptions.push(rec.shape);}
-    });
+tableData.forEach(function(rec) {
+    if (datetimeOptions.includes(rec.datetime)===false){datetimeOptions.push(rec.datetime);}
+    if (cityOptions.includes(rec.city)===false){cityOptions.push(rec.city);}
+    if (stateOptions.includes(rec.state)===false){stateOptions.push(rec.state);}
+    if (countryOptions.includes(rec.country)===false){countryOptions.push(rec.country);}
+    if (shapeOptions.includes(rec.shape)===false){shapeOptions.push(rec.shape);}
+});
 
+// Populate options
+var dateOps = d3.select("#Date-s")
+datetimeOptions.forEach(function(date) {
+    dateOps.append('option').html(`<option value=${date}> ${date} </option>`)});
+
+var cityOps = d3.select("#cityOps")
+cityOptions.forEach(function(city) {
+    cityOps.append('option').html(`<option value=${city}> ${city} </option>`)
+});
+
+var stateOps = d3.select("#stateOps")
+stateOptions.forEach(function(state) {
+    var oprow = d3.select("#State-s");
+    Object.entries(state).forEach
+})
+
+
+// To be used to prepare the form
 var filterZone = {
         "City":cityOptions,
         "State":stateOptions,
